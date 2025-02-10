@@ -6,7 +6,7 @@ async function getAQI() {
     return;
   }
 
-  const apiKey = "6711aaf52e4ce128c2719018e75e9062"; // Replace with your actual API key
+  const apiKey = "6711aaf52e4ce128c2719018e75e9062"; 
   try {
     const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
     const geoResponse = await fetch(geoUrl);
@@ -33,7 +33,7 @@ async function getAQI() {
     }
   } catch (error) {
     document.getElementById("aqiResult").textContent = "Error fetching data";
-    console.error("Error fetching AQI data:", error); // Log the error
+    console.error("Error fetching AQI data:", error);
   }
 }
 
@@ -53,7 +53,7 @@ function displayAQI(pm25) {
     category = "Moderate";
   } else if (aqi <= 150) {
     resultDiv.classList.add("unhealthy");
-    resultDiv.style.backgroundColor = "orange"; // Use backgroundColor instead of background
+    resultDiv.style.backgroundColor = "orange"; 
     category = "Unhealthy for Sensitive Groups";
   } else if (aqi <= 200) {
     resultDiv.classList.add("unhealthy");
@@ -71,7 +71,6 @@ function displayAQI(pm25) {
 
   resultDiv.textContent += ` (${category})`;
 
-  // Fetch Gemini suggestions
   fetchGeminiSuggestions(aqi, category);
 }
 
@@ -98,7 +97,7 @@ function calculateAQI(pm25) {
 }
 
 async function fetchGeminiSuggestions(aqi, category) {
-  const apiKey = "AIzaSyCdtI4hTEC7C99ZnURMNAibJbHhRl_pu9A"; // Replace with your actual API key
+  const apiKey = "AIzaSyCdtI4hTEC7C99ZnURMNAibJbHhRl_pu9A"; 
   const geminiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${apiKey}`;
 
   const prompt = `The air quality index (AQI) is ${aqi}, categorized as ${category}. Provide health measures, precautions, and recommendations for people in bullet points with each section clearly labeled.`;
